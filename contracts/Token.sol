@@ -65,7 +65,7 @@ contract ERC20 is Ownable {
     // Make function mint with the account address and the token amount
     function mint(address _account, uint256 _amount) public onlyOwner {
         // Require that the account address is not = to the 0 address
-        require(_account != address(0), "mint to the zero address");
+        require(_account != address(0), "cannot mint to the zero address");
 
         // The token total supply is = to the token total supply + the input token amount
         tokenTotalSupply = tokenTotalSupply.add(_amount);
@@ -77,7 +77,7 @@ contract ERC20 is Ownable {
     // Make a function transfer with a recipient address and the token amount
     function transfer(address _recipient, uint256 _amount) public returns(bool) {
         // Require that the recipient address is not = to the 0 address
-        require(_recipient != address(0), "transfer to the zero address");
+        require(_recipient != address(0), "cannot transfer to the zero address");
         // Require that the msg.sender in the balances mapping is >= to the input amount
         require(balances[msg.sender] >= _amount, "Insufficient balance");
 
